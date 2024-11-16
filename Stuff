@@ -7824,7 +7824,7 @@ addcmd("savegame", {"saveplace"}, function(args, speaker)
  SSI = "saveinstance",
 }
 local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
-local Options = {RemovePlayerCharacters = false}
+local Options = {RemovePlayerCharacters = false,noscripts = true,NilInstances = true}
 synsaveinstance(Options)
         notify("Game Saved", "Saved place to the workspace folder within your exploit folder.")
     else
