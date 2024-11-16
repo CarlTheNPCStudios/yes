@@ -6277,7 +6277,7 @@ local TeleportCheck = false
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if KeepInfYield and (not TeleportCheck) and queueteleport then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()")
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff'))()")
 	end
 end)
 
@@ -7819,7 +7819,13 @@ end)
 addcmd("savegame", {"saveplace"}, function(args, speaker)
     if saveinstance then
         notify("Loading", "Downloading game. This will take a while")
-        saveinstance()
+        local Params = {
+ RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
+ SSI = "saveinstance",
+}
+local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
+local Options = {RemovePlayerCharacters = false}
+synsaveinstance(Options)
         notify("Game Saved", "Saved place to the workspace folder within your exploit folder.")
     else
         notify("Incompatible Exploit", "Your exploit does not support this command (missing saveinstance)")
@@ -12806,7 +12812,7 @@ IYMouse.Move:Connect(checkTT)
 
 task.spawn(function()
 	local success, latestVersionInfo = pcall(function() 
-		local versionJson = game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version')
+		local versionJson = game:HttpGet('https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff')
 		return HttpService:JSONDecode(versionJson)
 	end)
 
