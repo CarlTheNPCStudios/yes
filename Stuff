@@ -6475,7 +6475,7 @@ local hum = char:WaitForChild("Humanoid")
 task.wait(2)
 PiggyBackTask = task.spawn(function()
 	while task.wait() do
-		local cf =  ehrp.CFrame * CFrame.new(0, 0, 1)  *CFrame.fromEulerAnglesXYZ(0,0.1,0.25)
+		local cf =  ehrp.CFrame * CFrame.new(0, 0, 1)  *CFrame.fromEulerAnglesXYZ(0,0.1,0.35)
 		hrp.CFrame = cf
 		hum.Sit = true
         hrp.Velocity = Vector3.zero
