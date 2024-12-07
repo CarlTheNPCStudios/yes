@@ -4702,6 +4702,10 @@ CMDs[#CMDs + 1] = {NAME = 'promptr15', DESC = 'Prompts the game to switch your r
 CMDs[#CMDs + 1] = {NAME = 'wallwalk / walkonwalls', DESC = 'Walk on walls'}
 CMDs[#CMDs + 1] = {NAME = 'setsim / setsimulationdistance', DESC = 'set the clients simulation distance (useful for fe exploits)'}
 CMDs[#CMDs + 1] = {NAME = 'missile', DESC = '"and i, am a missile." --frostedderp (target player then speed) '}
+CMDs[#CMDs + 1] = {NAME = 'kiss', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'piggyback / pb', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'unkiss', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'unpiggyback / unpb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes ad billboards'}
 wait()
 
@@ -6447,6 +6451,87 @@ print(playerse[1])
 --notify("ERROR", "Player target required")
 --end
 end)
+
+
+local PiggyBackTask
+
+addcmd('piggyback', {"pb"}, function(args, speaker)
+local ts = game:GetService("TweenService")
+local debris = game:GetService("Debris")
+local char =  speaker.Character
+local playerse = getPlayer(args[1], speaker)
+local function findThem(stringe)
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name == stringe then
+return v
+end
+end
+return nil
+end
+local target = findThem(playerse[1]).Character
+local ehrp = target:WaitForChild("HumanoidRootPart")
+local hrp = char:WaitForChild("HumanoidRootPart")
+local hum = char:WaitForChild("Humanoid")
+task.wait(2)
+PiggyBackTask = task.spawn(function()
+	while task.wait() do
+		local cf =  ehrp.CFrame * CFrame.new(0, 0, 1)  *CFrame.fromEulerAnglesXYZ(0,0.1,0.25)
+		hrp.CFrame = cf
+		hum.Sit = true
+        hrp.Velocity = Vector3.zero
+	end
+end)
+end)
+
+addcmd('unpiggyback', {"unpb"}, function(args, speaker)
+task.cancel(PiggyBackTask)
+local char =  speaker.Character
+local hum = char:WaitForChild("Humanoid")
+hum.Sit = false
+end)
+
+
+local Kiss
+
+addcmd('kiss', {}, function(args, speaker)
+local ts = game:GetService("TweenService")
+local debris = game:GetService("Debris")
+local char =  speaker.Character
+local playerse = getPlayer(args[1], speaker)
+local function findThem(stringe)
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name == stringe then
+return v
+end
+end
+return nil
+end
+local target = findThem(playerse[1]).Character
+local ehrp = target:WaitForChild("HumanoidRootPart")
+local hrp = char:WaitForChild("HumanoidRootPart")
+local hum = char:WaitForChild("Humanoid")
+task.wait(2)
+Kiss = task.spawn(function()
+	while task.wait() do
+		local cf =  ehrp.CFrame * CFrame.new(0, 0.1, -1) 
+		hrp.CFrame = CFrame.new(cf.Position,   (ehrp.CFrame * CFrame.new(0, 0.1, 0)).Position )
+		hum.Sit = true
+        hrp.Velocity = Vector3.zero
+	end
+end)
+end)
+
+addcmd('unkiss', {}, function(args, speaker)
+task.cancel(Kiss)
+local char =  speaker.Character
+local hum = char:WaitForChild("Humanoid")
+hum.Sit = false
+end)
+
+
+
+
+
 
 
 addcmd('addalias',{},function(args, speaker)
