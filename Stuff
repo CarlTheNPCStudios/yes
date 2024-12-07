@@ -6469,7 +6469,7 @@ end
 return nil
 end
 local target = findThem(playerse[1]).Character
-local ehrp = target:WaitForChild("HumanoidRootPart")
+local ehrp = target:WaitForChild("Torso")
 local hrp = char:WaitForChild("HumanoidRootPart")
 local hum = char:WaitForChild("Humanoid")
 task.wait(2)
@@ -6507,7 +6507,7 @@ end
 return nil
 end
 local target = findThem(playerse[1]).Character
-local ehrp = target:WaitForChild("HumanoidRootPart")
+local ehrp = target:WaitForChild("Torso")
 local hrp = char:WaitForChild("HumanoidRootPart")
 local hum = char:WaitForChild("Humanoid")
 task.wait(2)
