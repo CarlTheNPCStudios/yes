@@ -4703,6 +4703,7 @@ CMDs[#CMDs + 1] = {NAME = 'wallwalk / walkonwalls', DESC = 'Walk on walls'}
 CMDs[#CMDs + 1] = {NAME = 'setsim / setsimulationdistance', DESC = 'set the clients simulation distance (useful for fe exploits)'}
 CMDs[#CMDs + 1] = {NAME = 'missile', DESC = '"and i, am a missile." --frostedderp (target player then speed) '}
 CMDs[#CMDs + 1] = {NAME = 'kiss', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'darkdex / ddex', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'piggyback / pb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unkiss', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unpiggyback / unpb', DESC = ''}
@@ -10389,6 +10390,13 @@ end)
 addcmd('explorer', {'dex'}, function(args, speaker)
 	notify('Loading', 'Hold on a sec')
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+end)
+
+
+
+addcmd('darkdex', {'ddex'}, function(args, speaker)
+	notify('Loading', 'Hold on a sec')
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
 end)
 
 addcmd('olddex', {'odex'}, function(args, speaker)
