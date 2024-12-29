@@ -6563,7 +6563,7 @@ task.wait(2)
 bj = task.spawn(function()
 	while task.wait() do
 		local cf =  ehrp.CFrame * CFrame.new(0, -2, -1) 
-		hrp.CFrame = CFrame.new(cf.Position,   (ehrp.CFrame * CFrame.new(0, 0.1, 0)).Position )
+		hrp.CFrame = CFrame.new(cf.Position,   (ehrp.CFrame * CFrame.new(0, -2, 0)).Position )
 		hum.Sit = true
         hrp.Velocity = Vector3.zero
 	end
