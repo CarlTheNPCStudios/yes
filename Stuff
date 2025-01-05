@@ -4708,13 +4708,11 @@ CMDs[#CMDs + 1] = {NAME = 'setsim / setsimulationdistance', DESC = 'set the clie
 CMDs[#CMDs + 1] = {NAME = 'missile', DESC = '"and i, am a missile." --frostedderp (target player then speed) '}
 CMDs[#CMDs + 1] = {NAME = 'kiss', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'darkdex / ddex', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'turtlespy / tspy', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'piggyback / pb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unkiss', DESC = ''}
-
 CMDs[#CMDs + 1] = {NAME = 'bj', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unbj', DESC = ''}
-
-
 CMDs[#CMDs + 1] = {NAME = 'unpiggyback / unpb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes ad billboards'}
 wait()
@@ -6502,6 +6500,38 @@ end)
 
 
 local Kiss
+
+addcmd('kiss', {}, function(args, speaker)
+local ts = game:GetService("TweenService")
+local debris = game:GetService("Debris")
+local char =  speaker.Character
+local playerse = getPlayer(args[1], speaker)
+local function findThem(stringe)
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name == stringe then
+return v
+end
+end
+return nil
+end
+local target = findThem(playerse[1]).Character
+local ehrp = target:WaitForChild("Torso")
+local hrp = char:WaitForChild("HumanoidRootPart")
+local hum = char:WaitForChild("Humanoid")
+task.wait(2)
+Kiss = task.spawn(function()
+	while task.wait() do
+		local cf =  ehrp.CFrame * CFrame.new(0, 0.1, -1) 
+		hrp.CFrame = CFrame.new(cf.Position,   (ehrp.CFrame * CFrame.new(0, 0.1, 0)).Position )
+		hum.Sit = true
+        hrp.Velocity = Vector3.zero
+	end
+end)
+end)
+
+addcmd('turtlespy', {"tspy"}, function(args, speaker)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Turtle-Brand/Turtle-Spy/main/source.lua", true))()
+end)
 
 addcmd('kiss', {}, function(args, speaker)
 local ts = game:GetService("TweenService")
