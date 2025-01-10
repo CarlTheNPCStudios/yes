@@ -7983,6 +7983,18 @@ local Params = {
  SSI = "saveinstance",
 }
 local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
+local Options = {RemovePlayerCharacters = false,noscripts = true} -- Documentation here https://luau.github.io/UniversalSynSaveInstance/api/SynSaveInstance
+synsaveinstance(Options)
+        notify("Game Saved", "Saved place to the workspace folder within your exploit folder.")
+end)
+
+addcmd("savegamescripts", {"saveplacescripts"}, function(args, speaker)
+        notify("Loading", "Downloading game. This will take a while")
+local Params = {
+ RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
+ SSI = "saveinstance",
+}
+local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
 local Options = {RemovePlayerCharacters = false,noscripts = false} -- Documentation here https://luau.github.io/UniversalSynSaveInstance/api/SynSaveInstance
 synsaveinstance(Options)
         notify("Game Saved", "Saved place to the workspace folder within your exploit folder.")
