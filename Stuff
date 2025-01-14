@@ -4712,7 +4712,10 @@ CMDs[#CMDs + 1] = {NAME = 'turtlespy / tspy', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'piggyback / pb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unkiss', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'bj', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'bend', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'bj2', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unbj', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'unbj2', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unpiggyback / unpb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes ad billboards'}
 wait()
@@ -6607,6 +6610,19 @@ local hum = char:WaitForChild("Humanoid")
 hum.Sit = false
 end)
 
+addcmd('bend', {}, function(args, speaker)
+	if not r15(speaker) then
+		local pchar=speaker.Character
+		local AnimationId = tostring(216937924)
+		local Anim = Instance.new("Animation")
+		Anim.AnimationId = "rbxassetid://"..AnimationId
+		local k = pchar:FindFirstChildOfClass('Humanoid'):LoadAnimation(Anim)
+		k:Play()
+			k:AdjustSpeed(0)
+	else
+		notify('R6 Required','This command requires the r6 rig type')
+	end
+end)
 
 
 addcmd('addalias',{},function(args, speaker)
