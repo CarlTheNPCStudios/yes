@@ -11,7 +11,7 @@ game.Players.LocalPlayer.OnTeleport:Connect(function(State)
 		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/StupidBotForAuto'))()") --ok its ready
 	end
 end)
-
+----------------------------------------------------------------------------------------------ITS FUCKING READY
 for i,v in pairs(workspace:GetDescendants()) do 
 if v.Name == ("TouchInterest") then
 v:Destroy()
