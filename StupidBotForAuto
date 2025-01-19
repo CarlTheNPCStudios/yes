@@ -45,7 +45,7 @@ GuiService.ErrorMessageChanged:Connect(function()
 	end)
 
 
-
+task.wait(2)
 for i,v in pairs(workspace:GetDescendants()) do 
 if v.Name == ("TouchInterest") then
 v:Destroy()
