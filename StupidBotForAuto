@@ -11,7 +11,7 @@ game.Players.LocalPlayer.OnTeleport:Connect(function(State)
 		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/StupidBotForAuto'))()") --ok its ready
 	end
 end)
-----------------------------------------------------------------------------------------------ITS FUCKING READY
+----------------------------------------------------------------------------------------------ITS FUCKING READY V2 NYEHEHEHEHE
 for i,v in pairs(workspace:GetDescendants()) do 
 if v.Name == ("TouchInterest") then
 v:Destroy()
@@ -31,6 +31,8 @@ local hrp = char.HumanoidRootPart
 local CurrentDelay = DELAY
 
 local Current = 0
+
+task.spawn(function()
 while task.wait(0.1) do
 for i,v in pairs(workspace.BoxPositions:GetChildren()) do
 if v:FindFirstChildOfClass("Model") then
@@ -61,7 +63,7 @@ task.wait(CurrentDelay)
 end
 end
 end
-
+end)
 
 task.wait(5)
 
