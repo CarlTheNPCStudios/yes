@@ -4718,6 +4718,9 @@ CMDs[#CMDs + 1] = {NAME = 'unbj', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unbj2', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unpiggyback / unpb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes ad billboards'}
+
+CMDs[#CMDs + 1] = {NAME = 'marble / cheeky', DESC = 'feelin a lil cheeky!'}
+
 wait()
 
 for i = 1, #CMDs do
@@ -10895,7 +10898,9 @@ addcmd("unbj2", {}, function(args, speaker)
 	end
 end)
 
-
+addcmd("marble", {"cheeky"}, function(args, speaker)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Marble'))()
+end)
 
 
 
