@@ -1,0 +1,53 @@
+local speed = 125
+local speed2 = speed*2
+local char = game.Players.LocalPlayer.Character
+local hrp = char.HumanoidRootPart
+local marble = hrp
+marble.Shape = "Ball"
+marble.Size = Vector3.new(1,1,1)*10
+local weld = Instance.new("Weld",marble)
+weld.Part0 = marble
+weld.Part1 = hrp
+local density = 100--Put your number
+local friction = 0.4
+local elasticity = 0.2
+local frictionWeight = 1
+local elasticityWeight = 1
+local physProperties = PhysicalProperties.new(density, friction, elasticity, frictionWeight, elasticityWeight)
+marble.CustomPhysicalProperties = physProperties
+marble.Transparency = 0.5
+marble.CanCollide = true
+char.Humanoid.PlatformStand = true
+workspace.CurrentCamera.CameraSubject = marble
+
+
+local hum = char:FindFirstChildOfClass("Humanoid")
+local rot = Instance.new("BodyAngularVelocity",marble)
+local bv = Instance.new("BodyVelocity",marble)
+rot.MaxTorque = Vector3.new(1,1,1)*math.huge
+bv.MaxForce = Vector3.new(1,1,1)*math.huge
+
+while task.wait() do
+	local acceleration = 0.006 -- adjust this value to control the acceleration
+	char.Humanoid.PlatformStand = true
+
+	if hum.MoveDirection.Magnitude == 0 then
+		rot.MaxTorque = Vector3.zero
+		bv.MaxForce = Vector3.zero
+	else
+		rot.MaxTorque = Vector3.new(1,1,1)*math.huge
+		bv.MaxForce = Vector3.new(math.huge,0,math.huge)
+	end
+
+	local Vel = Vector3.new(hum.MoveDirection.Z*speed,0,hum.MoveDirection.X*-speed)
+	local diff = Vel - rot.AngularVelocity
+	local acc = diff * acceleration
+	rot.AngularVelocity = rot.AngularVelocity + acc
+
+
+	local Vel = Vector3.new(hum.MoveDirection.X*speed2,0,hum.MoveDirection.Z*speed2)
+	local diff = Vel -bv.Velocity
+	local acc = diff * acceleration
+	bv.Velocity = bv.Velocity + acc
+
+end
