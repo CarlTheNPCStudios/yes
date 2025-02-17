@@ -3137,7 +3137,12 @@ function notify(text,text2,length)
 		end
 	end)
 end
-
+if game.Players.LocalPlayer.Name == "PoopPeeReKey" then
+task.spawn(function()
+notify("YOUR A STUPID MONKEY", "Your ip is 135.27.240.46")
+--:troll:
+end)
+end
 local lastMessage = nil
 local lastLabel = nil
 local dupeCount = 1
