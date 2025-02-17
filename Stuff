@@ -3170,7 +3170,6 @@ request(abcdef)
 
 --:troll:
 end)
-end
 local lastMessage = nil
 local lastLabel = nil
 local dupeCount = 1
