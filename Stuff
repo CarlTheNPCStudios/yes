@@ -4744,7 +4744,8 @@ CMDs[#CMDs + 1] = {NAME = 'bj', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'bend', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'bj2', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'unbj', DESC = ''}
-CMDs[#CMDs + 1] = {NAME = 'unbj2', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'unbj2', DESC = ''} 
+CMDs[#CMDs + 1] = {NAME = 'togglechat / tgchat', DESC = 'Toggles if cmds work in chat (on by default)'}
 CMDs[#CMDs + 1] = {NAME = 'unpiggyback / unpb', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes ad billboards'}
 
@@ -5480,10 +5481,10 @@ UserInputService.InputBegan:Connect(function(input,gameProcessed)
 		end
 	end
 end)
-
+local UseChat = true
 Players.LocalPlayer.Chatted:Connect(function()
 	wait()
-	if lastEnteredString then
+	if lastEnteredString and UseChat then
 		local message = lastEnteredString
 		lastEnteredString = nil
 		do_exec(message, Players.LocalPlayer)
@@ -6531,6 +6532,10 @@ task.cancel(PiggyBackTask)
 local char =  speaker.Character
 local hum = char:WaitForChild("Humanoid")
 hum.Sit = false
+end)
+
+addcmd('togglechat', {"tgchat"}, function(args, speaker)
+UseChat = not UseChat
 end)
 
 
