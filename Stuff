@@ -5487,7 +5487,9 @@ Players.LocalPlayer.Chatted:Connect(function()
 	if lastEnteredString and UseChat then
 		local message = lastEnteredString
 		lastEnteredString = nil
+if UseChat == true then
 		do_exec(message, Players.LocalPlayer)
+end
 	end
 end)
 
@@ -6536,6 +6538,7 @@ end)
 
 addcmd('togglechat', {"tgchat"}, function(args, speaker)
 UseChat = not UseChat
+notify("STATUS",tostring(UseChat))
 end)
 
 
