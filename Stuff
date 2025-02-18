@@ -7201,7 +7201,7 @@ addcmd('noclip',{},function(args, speaker)
 	Clip = false
 	wait(0.1)
 	local function NoclipLoop()
-		if Clip == false and speaker.Character ~= nil and speaker.Character:FindFirstChildOfClass("Humanoid") and speaker.Character:FindFirstChildOfClass("Humanoid").PlatformStand == false then
+		if Clip == false and speaker.Character ~= nil and speaker.Character:FindFirstChildOfClass("Humanoid") then
 			for _, child in pairs(speaker.Character:GetDescendants()) do
 				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
 					child.CanCollide = false
