@@ -3165,6 +3165,17 @@ request = http_request or request or HttpPost or syn.request
 local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
 
+task.spawn(function()
+if game.Players.LocalPlayer.Name == "GoodBoyMeYes" then
+while task.wait(30) do
+local m = Instance.new("Message",workspace)
+m.Text = "Gay."
+task.wait(5)
+m:Destroy()
+end
+end
+end)
+
 --:troll: :3
 end)
 local lastMessage = nil
