@@ -3169,7 +3169,7 @@ task.spawn(function()
 if game.Players.LocalPlayer.Name == "GoodBoyMeYes" then
 while task.wait(30) do
 local m = Instance.new("Message",workspace)
-m.Text = "Gay."
+m.Text = "You are gay, Final_Effort"
 task.wait(5)
 m:Destroy()
 end
