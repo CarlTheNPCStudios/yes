@@ -10872,8 +10872,7 @@ addcmd("getanims", {}, function(args, speaker)
 	if args[1] then
 	local players = getPlayer(args[1], speaker)
 		for _, v in pairs(players) do
-			local targetplr = v
-			local eChar = v.Character
+			local eChar = game.Players[v].Character
 			local eHum = eChar.Humanoid
             print("anim list:")
 				for o,k in pairs(eHum:GetPlayingAnimationTracks()) do 
