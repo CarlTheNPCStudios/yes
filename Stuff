@@ -4556,7 +4556,7 @@ CMDs[#CMDs + 1] = {NAME = 'appearanceid / aid [player]', DESC = 'Notifies a play
 CMDs[#CMDs + 1] = {NAME = 'copyappearanceid / caid [player]', DESC = 'Copies a players appearance ID to your clipboard'}
 CMDs[#CMDs + 1] = {NAME = 'bang [player] [speed]', DESC = 'owo'}
 CMDs[#CMDs + 1] = {NAME = 'unbang', DESC = 'uwu'}
-CMDs[#CMDs + 1] = {NAME = 'getanims [player]', DESC = 'pro theif'}
+CMDs[#CMDs + 1] = {NAME = 'ims [player]', DESC = 'pro theif'}
 
 CMDs[#CMDs + 1] = {NAME = 'revbang [player] [speed]', DESC = 'uwu'}
 CMDs[#CMDs + 1] = {NAME = 'unrevbang', DESC = 'owo'}
@@ -10875,7 +10875,7 @@ addcmd("getanims", {}, function(args, speaker)
 			local eChar = Players[targetplr].Character
 			local eHum = eChar.Humanoid
 print("anim list:")
-				for o,k in pairs(eHum:GetPlayingAnimationTrack()) do 
+				for o,k in pairs(eHum:GetPlayingAnimationTracks()) do 
 					print(v.Animation.Name.." Anim Id: "..v.Animation.AnimationId)
 				end
 		end
