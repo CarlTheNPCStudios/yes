@@ -10874,8 +10874,9 @@ addcmd("getanims", {}, function(args, speaker)
 			local targetplr = Players[v].Name
 			local eChar = Players[targetplr]
 			local eHum = eChar.Humanoid
+print("anim list:")
 				for o,k in pairs(eHum:GetPlayingAnimationTrack()) do 
-					print(v.Name.." Anim Id: "..v.AnimationId)
+					print(v.Animation.Name.." Anim Id: "..v.Animation.AnimationId)
 				end
 		end
 	end
