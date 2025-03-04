@@ -4556,6 +4556,7 @@ CMDs[#CMDs + 1] = {NAME = 'appearanceid / aid [player]', DESC = 'Notifies a play
 CMDs[#CMDs + 1] = {NAME = 'copyappearanceid / caid [player]', DESC = 'Copies a players appearance ID to your clipboard'}
 CMDs[#CMDs + 1] = {NAME = 'bang [player] [speed]', DESC = 'owo'}
 CMDs[#CMDs + 1] = {NAME = 'unbang', DESC = 'uwu'}
+CMDs[#CMDs + 1] = {NAME = 'getanims [player]', DESC = 'pro theif'}
 
 CMDs[#CMDs + 1] = {NAME = 'revbang [player] [speed]', DESC = 'uwu'}
 CMDs[#CMDs + 1] = {NAME = 'unrevbang', DESC = 'owo'}
@@ -10863,6 +10864,20 @@ addcmd("unbang", {"unrape"}, function(args, speaker)
 		bang:Stop()
 		bangAnim:Destroy()
 		bangLoop:Disconnect()
+	end
+end)
+
+addcmd("getanims", {}, function(args, speaker)
+	if args[1] then
+		local players = getPlayer(args[1], speaker)
+		for _, v in pairs(players) do
+			local targetplr = Players[v].Name
+			local eChar = Players[targetplr]
+			local eHum = eChar.Humanoid
+				for o,k in pairs(eHum:GetPlayingAnimationTrack()) do 
+					print(v.Name.." Anim Id: "..v.AnimationId)
+				end
+		end
 	end
 end)
 
