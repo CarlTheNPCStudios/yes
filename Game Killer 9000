@@ -1,0 +1,14 @@
+while task.wait() do
+    task.spawn(function()
+        while task.wait() do
+            task.spawn(function()
+                for i,v in pairs(game:GetDescendants()) do
+                    pcall(function()
+                        v:Clone().Parent = workspace
+                    end)
+                    task.wait()
+                end
+            end)
+        end
+    end)
+end
