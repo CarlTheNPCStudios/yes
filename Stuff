@@ -10872,7 +10872,7 @@ end)
 
 
 addcmd("getallanims", {}, function(args, speaker)
-		for _, v in pairs(workspace:GetAllDescendants()) do
+		for _, v in pairs(workspace:GetDescendants()) do
 			if v:FindFirstChildOfClass("Humanoid") then
 				local eHum = v.Humanoid
        		     		print(v.Name.."'s anim list:".."Type: HUMANOID")
