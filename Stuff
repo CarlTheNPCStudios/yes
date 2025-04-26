@@ -10876,24 +10876,24 @@ addcmd("getallanims", {}, function(args, speaker)
 			if v:FindFirstChildOfClass("Humanoid") then
 				local eHum = v:FindFirstChildOfClass("Humanoid")
 if #eHum:GetPlayingAnimationTracks() > 0 then
-       		     		print(v.Name.."'s anim list:".."Type: HUMANOID")
+       		     		print(v:GetFullName().."'s anim list:".." Type: HUMANOID")
 
 						for o,k in pairs(eHum:GetPlayingAnimationTracks()) do 
-							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.." Type: HUMANOID")
+							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.." Type: HUMANOID".. "    "..v:GetFullName())
 						end
-				print(v.Name.." End")
+				print(v:GetFullName().." End")
 				print()
 end
 end
 			if v:FindFirstChildOfClass("AnimationController")  then
 				local eHum = v:FindFirstChildOfClass("AnimationController")
 if #eHum:GetPlayingAnimationTracks() > 0 then
-       		     		print(v.Name.."'s anim list:".."Type: AnimationController")
+       		     		print(v:GetFullName().."'s anim list:".." Type: AnimationController")
 
 						for o,k in pairs(eHum:GetPlayingAnimationTracks()) do 
-							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.." Type: AnimationController")
+							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.." Type: AnimationController".. "    "..v:GetFullName())
 						end
-				print(v.Name.." End")
+				print(v:GetFullName().." End")
 				print()
 end
 
