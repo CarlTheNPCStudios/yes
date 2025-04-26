@@ -10875,24 +10875,27 @@ addcmd("getallanims", {}, function(args, speaker)
 		for _, v in pairs(workspace:GetDescendants()) do
 			if v:FindFirstChildOfClass("Humanoid") then
 				local eHum = v:FindFirstChildOfClass("Humanoid")
+if #eHum:GetPlayingAnimationTracks() > 0 then
        		     		print(v.Name.."'s anim list:".."Type: HUMANOID")
 
 						for o,k in pairs(eHum:GetPlayingAnimationTracks()) do 
-							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.."Type: HUMANOID")
+							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.." Type: HUMANOID")
 						end
 				print(v.Name.." End")
 				print()
 end
+end
 			if v:FindFirstChildOfClass("AnimationController")  then
 				local eHum = v:FindFirstChildOfClass("AnimationController")
+if #eHum:GetPlayingAnimationTracks() > 0 then
        		     		print(v.Name.."'s anim list:".."Type: AnimationController")
 
 						for o,k in pairs(eHum:GetPlayingAnimationTracks()) do 
-							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.."Type: AnimationController")
+							print(k.Animation.Name.." Anim Id: "..k.Animation.AnimationId.." Type: AnimationController")
 						end
 				print(v.Name.." End")
 				print()
-
+end
 
 			end
 		end
