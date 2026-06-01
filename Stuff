@@ -4750,11 +4750,11 @@ CMDs[#CMDs + 1] = {NAME = 'promptr15', DESC = 'Prompts the game to switch your r
 CMDs[#CMDs + 1] = {NAME = 'wallwalk / walkonwalls', DESC = 'Walk on walls'}
 CMDs[#CMDs + 1] = {NAME = 'setsim / setsimulationdistance', DESC = 'set the clients simulation distance (useful for fe exploits)'}
 CMDs[#CMDs + 1] = {NAME = 'missile', DESC = '"and i, am a missile." --frostedderp (target player then speed) '}
-CMDs[#CMDs + 1] = {NAME = 'kiss', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'facehug', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'darkdex / ddex', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'turtlespy / tspy', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'piggyback / pb', DESC = ''}
-CMDs[#CMDs + 1] = {NAME = 'unkiss', DESC = ''}
+CMDs[#CMDs + 1] = {NAME = 'u', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'bj', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'bend', DESC = ''}
 CMDs[#CMDs + 1] = {NAME = 'bj2', DESC = ''}
@@ -6559,7 +6559,7 @@ end)
 
 local Kiss
 
-addcmd('kiss', {}, function(args, speaker)
+addcmd('facehug', {}, function(args, speaker)
 local ts = game:GetService("TweenService")
 local debris = game:GetService("Debris")
 local char =  speaker.Character
@@ -6591,7 +6591,7 @@ addcmd('turtlespy', {"tspy"}, function(args, speaker)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Turtle-Brand/Turtle-Spy/main/source.lua", true))()
 end)
 
-addcmd('kiss', {}, function(args, speaker)
+addcmd('facehug', {}, function(args, speaker)
 local ts = game:GetService("TweenService")
 local debris = game:GetService("Debris")
 local char =  speaker.Character
@@ -6619,7 +6619,7 @@ Kiss = task.spawn(function()
 end)
 end)
 
-addcmd('unkiss', {}, function(args, speaker)
+addcmd('unfacehug', {}, function(args, speaker)
 task.cancel(Kiss)
 local char =  speaker.Character
 local hum = char:WaitForChild("Humanoid")
@@ -6628,56 +6628,7 @@ end)
 
 
 
-local bj
 
-addcmd('bj', {}, function(args, speaker)
-local ts = game:GetService("TweenService")
-local debris = game:GetService("Debris")
-local char =  speaker.Character
-local playerse = getPlayer(args[1], speaker)
-local function findThem(stringe)
-for i,v in pairs(game.Players:GetPlayers()) do
-if v.Name == stringe then
-return v
-end
-end
-return nil
-end
-local target = findThem(playerse[1]).Character
-local ehrp = target:WaitForChild("Torso")
-local hrp = char:WaitForChild("HumanoidRootPart")
-local hum = char:WaitForChild("Humanoid")
-task.wait(2)
-bj = task.spawn(function()
-	while task.wait() do
-		local cf =  ehrp.CFrame * CFrame.new(0, -2, -1) 
-		hrp.CFrame = CFrame.new(cf.Position,   (ehrp.CFrame * CFrame.new(0, -2, 0)).Position )
-		hum.Sit = true
-        hrp.Velocity = Vector3.zero
-	end
-end)
-end)
-
-addcmd('unbj', {}, function(args, speaker)
-task.cancel(bj)
-local char =  speaker.Character
-local hum = char:WaitForChild("Humanoid")
-hum.Sit = false
-end)
-
-addcmd('bend', {}, function(args, speaker)
-	if not r15(speaker) then
-		local pchar=speaker.Character
-		local AnimationId = tostring(216937924)
-		local Anim = Instance.new("Animation")
-		Anim.AnimationId = "rbxassetid://"..AnimationId
-		local k = pchar:FindFirstChildOfClass('Humanoid'):LoadAnimation(Anim)
-		k:Play()
-			k:AdjustSpeed(0)
-	else
-		notify('R6 Required','This command requires the r6 rig type')
-	end
-end)
 
 
 addcmd('addalias',{},function(args, speaker)
