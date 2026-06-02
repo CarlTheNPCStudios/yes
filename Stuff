@@ -6412,7 +6412,7 @@ end)
 end)
 
 addcmd('blazeballs', {}, function(args, speaker)
-local id =111967977140743
+local id =86432709209128
 for i,v in pairs(game:GetDescendants()) do
 	if v:IsA("BasePart") then
 		local Decal = Instance.new("Decal")
