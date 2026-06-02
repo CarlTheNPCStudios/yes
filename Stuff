@@ -4761,6 +4761,7 @@ CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes a
 
 CMDs[#CMDs + 1] = {NAME = 'marble / cheeky', DESC = 'feelin a lil cheeky!'}
 CMDs[#CMDs + 1] = {NAME = 'packgod / humble', DESC = 'i dont suggest running this'}
+CMDs[#CMDs + 1] = {NAME = 'blazeballs', DESC = 'i dont suggest running this'}
 
 wait()
 
@@ -6402,6 +6403,62 @@ game.RunService.RenderStepped:Connect(function(delta)
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		elseif v:IsA("TextButton") then
 			v.Text = "HUMBLED"
+			v.TextColor3 = Color3.fromRGB(255,0,0)
+			v.TextStrokeTransparency = 0
+			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+		end
+	end
+end)
+end)
+
+addcmd('blazeballs', {}, function(args, speaker)
+local id =111967977140743
+for i,v in pairs(game:GetDescendants()) do
+	if v:IsA("BasePart") then
+		local Decal = Instance.new("Decal")
+		Decal.Parent = v
+		Decal.Texture = "rbxassetid://"..id
+		Decal.Face = Enum.NormalId.Top
+		local Decal = Instance.new("Decal")
+		Decal.Parent = v
+		Decal.Texture = "rbxassetid://"..id
+		Decal.Face = Enum.NormalId.Bottom
+		local Decal = Instance.new("Decal")
+		Decal.Parent = v
+		Decal.Texture = "rbxassetid://"..id
+		Decal.Face = Enum.NormalId.Front
+		local Decal = Instance.new("Decal")
+		Decal.Parent = v
+		Decal.Texture = "rbxassetid://"..id
+		Decal.Face = Enum.NormalId.Back
+		local Decal = Instance.new("Decal")
+		Decal.Parent = v
+		Decal.Texture = "rbxassetid://"..id
+		Decal.Face = Enum.NormalId.Left
+		local Decal = Instance.new("Decal")
+		Decal.Parent = v
+		Decal.Texture = "rbxassetid://"..id
+		Decal.Face = Enum.NormalId.Right
+	end
+end
+
+game.RunService.RenderStepped:Connect(function(delta)
+	for i,v in pairs(game:GetDescendants()) do
+		if v:IsA("ParticleEmitter") then
+			v.Texture = "rbxassetid://"..id
+		elseif v:IsA("ImageLabel") then
+			v.Image = "rbxassetid://"..id
+		elseif v:IsA("ImageButton") then
+			v.Image = "rbxassetid://"..id
+		elseif v:IsA("Texture") then
+			v.Texture = "rbxassetid://"..id
+		elseif v:IsA("TextLabel") then
+			v.Text = "BLAZE BALLS"
+			v.TextColor3 = Color3.fromRGB(255,0,0)
+			v.TextStrokeTransparency = 0
+			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+		elseif v:IsA("TextButton") then
+			v.Text = "BLAZE BALLS"
 			v.TextColor3 = Color3.fromRGB(255,0,0)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
