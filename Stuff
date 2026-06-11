@@ -4762,6 +4762,8 @@ CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes a
 CMDs[#CMDs + 1] = {NAME = 'marble / cheeky', DESC = 'feelin a lil cheeky!'}
 CMDs[#CMDs + 1] = {NAME = 'packgod / humble', DESC = 'i dont suggest running this'}
 CMDs[#CMDs + 1] = {NAME = 'blazeballs', DESC = 'i dont suggest running this'}
+CMDs[#CMDs + 1] = {NAME = 'highlightesp', DESC = 'Wont work in every game, may be funky in some'}
+CMDs[#CMDs + 1] = {NAME = 'unhighlightesp', DESC = 'it just fucking removes it bro'}
 
 wait()
 
@@ -12776,6 +12778,64 @@ addcmd("unstaffwatch", {}, function(args, speaker)
         staffwatchjoin:Disconnect()
     end
     notify("Staffwatch", "Disabled")
+end)
+
+local HEspCon = {}
+local IsHighlighting = false
+addcmd("highlightesp", {}, function(args, speaker)
+if IsHighlighting == true then  notify("Karura's highlight ESP", "It's already enabled, dumbass") return end
+IsHighlighting = true
+local AddHighlightProperties = function(highlight:Highlight,color)
+	color = color or Color3.new(1, 0, 0)
+	highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	highlight.OutlineColor = color
+	highlight.OutlineTransparency = 0
+	highlight.FillTransparency = 1
+	highlight.FillColor = color
+	highlight.Name = "GayAssHighlight"
+end
+
+local CreateHighlightOnCharacter = function(eChar)
+	local highlight = eChar:FindFirstChildOfClass("Highlight") or Instance.new("Highlight",eChar)
+	local ePlr = game.Players:GetPlayerFromCharacter(eChar)
+	local color = nil
+	if ePlr and ePlr.Team then
+		color = ePlr.TeamColor.Color
+	end
+	AddHighlightProperties(highlight,color)
+end
+
+
+local function AttachPlayer(ePlr:Player)
+	if ePlr == game.Players.LocalPlayer then return end
+	local char = ePlr.Character or ePlr.CharacterAdded:Wait()
+	CreateHighlightOnCharacter(char)
+	HEspCon[ePlr] = ePlr.CharacterAdded:Connect(function(char)
+		CreateHighlightOnCharacter(char)
+	end)
+end
+
+
+for _,ePlr in pairs(game.Players:GetPlayers()) do
+	AttachPlayer(ePlr)
+end
+HEspCon["PlrConnection"] = game.Players.PlayerAdded:Connect(AttachPlayer)
+ notify("Karura's highlight ESP", "Enabled :3")
+end)
+
+addcmd("unhighlightesp", {}, function(args, speaker)
+IsHighlighting = false
+for i,v in pairs(HEspCon) do
+v:Disconnect()
+end
+
+for i,v in pairs(workspace:GetDescendants()) do 
+if v.Name == "GayAssHighlight" then
+v:Destroy()
+end
+end
+
+    notify("Karura's highlight ESP", "Disabled")
 end)
 
 addcmd('removeterrain',{'rterrain','noterrain'},function(args, speaker)
