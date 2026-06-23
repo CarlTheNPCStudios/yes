@@ -18,6 +18,9 @@ end)
 Main:AddButton("Load Adonis Bypass (LOAD BEFORE REMOTE SPYS)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
 end)
+Main:AddButton("Load Lucas's Magnet", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Lukashub-coder/Lukas-magnet/refs/heads/main/Lukas%20magnet"))()
+end)
 
 	Main:AddButton({
 		Text = "Crash the game for some reason",
@@ -88,3 +91,50 @@ HProps:Section("Toggles")
     Window:Notify("Gravity", "not a valid number?", "error", 3)
     end
     end)
+
+
+--------------------------------- BLAP SATTLES??? -----------------------------------
+local SBProps = Window:Tab("BLAP SATTLES!?!?!?")
+
+local function IsGlove(tool)
+	if glove:FindFirstChild("Glove") or glove:FindFirstChild("Hand") or glove:FindFirstChild("glove") or glove:FindFirstChild("hand") then
+		return true
+	end
+	return false
+end
+
+local function FindGlove()
+	local char = GetChar()
+	for i,v in pairs(char:GetChildren()) do
+		if v:IsA("Tool") then
+			if IsGlove(v) then
+				return v
+			end
+		end
+	end
+	for i,v in pairs(plr.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			if IsGlove(v) then
+				return v
+			end
+		end
+	end
+return nil
+end
+
+SBProps:Paragraph("Note", "Some of these may work in other slap battles game, some may not. And loading some of these may just kick you in Blap Sattles")
+GProps:Label("I suggest 15 for glove scale")
+        HProps:Slider("Scale Glove", 0, 100, 3, function(value)
+			local char = GetChar()
+        	if char then
+				local glove = FindGlove()
+
+				if glove then
+					local Model = glove:FindFirstChild("Glove") or glove:FindFirstChild("Hand") or glove:FindFirstChild("glove") or glove:FindFirstChild("hand")
+					Model.Size = Vector3.new(1,1,1)*value
+				else
+					Window:Notify("Scale Glove", "Cannot find glove!", "error", 3)
+				end
+				
+       		end
+		end)	
