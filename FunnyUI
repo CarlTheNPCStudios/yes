@@ -91,6 +91,11 @@ HProps:Section("Toggles")
     Window:Notify("Gravity", "not a valid number?", "error", 3)
     end
     end)
+        GProps:Paragraph("Streaming Enabled Note","Streaming Enabled is the property that makes it so that the game pauses to load, and unloads things that are not within a radius. turning this off when it's defaulted to on SHOULD disable the annoying pop-up-")
+        GProps:Label("But it CANNOT remove the loading radius")
+    	GProps:Toggle("Streaming Enabled", workspace.StreamingEnabled, function(value)
+        workspace.StreamingEnabled = value
+	    end)
 
 
 --------------------------------- BLAP SATTLES??? -----------------------------------
@@ -123,7 +128,8 @@ return nil
 end
 
 SBProps:Paragraph("Note", "Some of these may work in other slap battles game, some may not. And loading some of these may just kick you in Blap Sattles")
-GProps:Label("I suggest 15 for glove scale")
+SBProps:Section("Useful")
+SBProps:Label("I suggest 15 for glove scale")
         SBProps:Slider("Scale Glove", 0, 100, 3, function(value)
 			local char = GetChar()
         	if char then
@@ -138,3 +144,94 @@ GProps:Label("I suggest 15 for glove scale")
 				
        		end
 		end)	
+
+        
+        SBProps:Paragraph("Anti-Void note","This creates a part at your feet, press this when your in the arena (RELOADABLE)")
+        SBProps:AddButton("Place Anti-Void", function()
+        local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local hrp = hum.RootPart
+
+        local part = Instance.new("Part",workspace)
+        part.Anchored = true
+        part.Size = Vector3.new(2048,1,2048)
+        part.Position = hrp.Position-Vector3.new(0,4.5,0)
+        part.Transparency = 0.8
+        part.Name = "KarV0id"
+
+        end
+        end)
+        SBProps:AddButton("Remove anti-void", function()
+        if workspace:FindFirstChild("KarV0id") then
+        workspace:FindFirstChild("KarV0id"):Destroy()
+        else
+        Window:Notify("Anti Void", "There is no anti-void!", "error", 3)
+        end
+        end)
+
+        SBProps:AddButton("Bring Trashcans", function()
+        local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local hrp = hum.RootPart
+
+        local folder = workspace:FindFirstChild("Interactables")
+
+        if folder then
+            for i,v in pairs(folder:GetChildren()) do
+if v:IsA("Model") then 
+v.PrimaryPart.CFrame = hrp.CFrame*CFrame.new(0,0,-6)
+end
+end
+        else
+            Window:Notify("Blap Sattles", "No Interacttables folder! Not Blap Sattles?", "error", 3)
+        end
+        end
+        end)
+
+        SBProps:AddButton("Collect all Slapples", function()
+        local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local hrp = hum.RootPart
+
+        for i,v in pairs(workspace:GetDescendants()) do 
+        if v:IsA("TouchTransmitter") and v:FindFirstAncestor("Slapple") or v:IsA("TouchTransmitter") and v.Parent.Parent.Name == "Slapple" then
+        char:PivotTo(v:FindFirstAncestor("Slapple"):GetPivot())
+        task.wait()
+        end
+        end
+
+        end
+        end)
+
+SBProps:Section("Visual")
+
+         SBProps:Paragraph("Set Slaps/Kills note","This sets your Slaps/Kills on the CLIENT, this does is purley visual unless the developer is a moron")
+             SBProps:TextBox("Set Slaps/Kills", "9999", function(text) 
+    if tonumber(text) then
+    if plr.leaderstats and plr.leaderstats.Slaps or plr.leaderstats and plr.leaderstats.Kills then
+    local val = plr.leaderstats:FindFirstChild("Slaps") or plr.leaderstats:FindFirstChild("Kills")
+    if val then
+    val.Value = text
+    else
+     Window:Notify("Set Slaps/Kills", "no valid values!", "error", 3)
+    end
+    end
+    else
+    Window:Notify("Set Slaps/Kills", "not a valid number?", "error", 3)
+    end
+    end)
+
+            SBProps:Paragraph("Set Glove note","This sets your Glove on the CLIENT, this does is purley visual unless the developer is a moron")
+             SBProps:TextBox("Set Glove", "Default", function(text) 
+    if plr.leaderstats and plr.leaderstats.Glove then
+    local val = plr.leaderstats:FindFirstChild("Glove") 
+    if val then
+    val.Value = text
+    else
+     Window:Notify("Set Glove", "no valid values!", "error", 3)
+    end
+    end
+    end)
