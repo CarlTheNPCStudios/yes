@@ -22,6 +22,13 @@ Main:AddButton("Load Lucas's Magnet", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Lukashub-coder/Lukas-magnet/refs/heads/main/Lukas%20magnet"))()
 end)
 
+Main:AddButton("Script builders dream", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
+end)
+
 	Main:AddButton({
 		Text = "Crash the game for some reason",
 		Height = 52,
