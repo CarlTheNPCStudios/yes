@@ -1,0 +1,90 @@
+local PUI = loadstring(game:HttpGet("https://haxhell.com/raw/universal-script-purpa-library"))()
+
+local plr = game.Players.LocalPlayer
+
+local function GetChar()
+    return plr.Character
+end
+
+local Window = PUI:CreateWindow({
+    Title = "Funny UI",
+    Theme = "Graphite"
+})
+
+local Main = Window:Tab("Main")
+Main:AddButton("Load Infinite Gay", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff"))()
+end)
+Main:AddButton("Load Adonis Bypass (LOAD BEFORE REMOTE SPYS)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
+end)
+
+	Main:AddButton({
+		Text = "Crash the game for some reason",
+		Height = 52,
+		Color = Color3.fromRGB(255, 0, 0),
+		HoverColor = Color3.fromRGB(150, 0, 0),
+		TextColor = Color3.fromRGB(255, 255, 255),
+		TextSize = 15,
+		Corner = 12,
+	}, function()
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Game%20Killer%209000"))()
+	end)
+
+local HProps = Window:Tab("Humanoid Properties")
+-------------------------------- Humanoid Properties -----------------------------------------
+HProps:Section("Toggles")
+	HProps:Toggle("Platform Stand", false, function(value)
+    local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        hum.PlatformStand = value
+        end
+	end)
+    	HProps:Toggle("Sitting", false, function(value)
+        local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        hum.Sit = value
+        end
+	end)
+        HProps:Toggle("Auto Rotate", true, function(value)
+        local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        hum.AutoRotate = value
+        end
+	end)
+    HProps:Section("Sliders")
+	HProps:Slider("Speed", 0, 100, 16, function(value)
+		local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        hum.WalkSpeed = value
+        end
+	end)
+    	HProps:Slider("Jump Power", 0, 100, 50, function(value)
+		local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        hum.JumpPower = value
+        end
+	end)
+        HProps:Slider("Hip Height/Float", 0, 100, 0, function(value)
+		local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        hum.HipHeight = value
+        end
+	end)
+
+    --------------------------------- Global Properties -----------------------------------
+    local GProps = Window:Tab("Global Properties")
+    GProps:Label("Set box to number, 192.2 is default")
+    GProps:TextBox("Gravity", "192.2", function(text) 
+    if tonumber(text) then
+    workspace.Gravity = text
+    else
+    Window:Notify("Gravity", "not a valid number?", "error", 3)
+    end
+    end)
