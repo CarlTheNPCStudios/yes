@@ -97,7 +97,7 @@ HProps:Section("Toggles")
 local SBProps = Window:Tab("BLAP SATTLES!?!?!?")
 
 local function IsGlove(tool)
-	if glove:FindFirstChild("Glove") or glove:FindFirstChild("Hand") or glove:FindFirstChild("glove") or glove:FindFirstChild("hand") then
+	if tool:FindFirstChild("Glove") or tool:FindFirstChild("Hand") or tool:FindFirstChild("glove") or tool:FindFirstChild("hand") then
 		return true
 	end
 	return false
@@ -124,7 +124,7 @@ end
 
 SBProps:Paragraph("Note", "Some of these may work in other slap battles game, some may not. And loading some of these may just kick you in Blap Sattles")
 GProps:Label("I suggest 15 for glove scale")
-        HProps:Slider("Scale Glove", 0, 100, 3, function(value)
+        SBProps:Slider("Scale Glove", 0, 100, 3, function(value)
 			local char = GetChar()
         	if char then
 				local glove = FindGlove()
