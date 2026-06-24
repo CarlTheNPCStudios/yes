@@ -41,6 +41,20 @@ end)
  loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Game%20Killer%209000"))()
 	end)
 
+    	Main:AddButton({
+		Text = "PRESS THIS I DARE YOU",
+		Height = 52,
+		Color = Color3.fromRGB(255, 255, 0),
+		HoverColor = Color3.fromRGB(200, 200, 0),
+		TextColor = Color3.fromRGB(0, 0, 0),
+		TextSize = 15,
+		Corner = 12,
+	}, function()
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/CursedThing"))()
+ task.wait(4)
+ while true do end
+	end)
+
 local HProps = Window:Tab("Humanoid Properties")
 -------------------------------- Humanoid Properties -----------------------------------------
 HProps:Section("Toggles")
@@ -242,3 +256,40 @@ SBProps:Section("Visual")
     end
     end
     end)
+
+--------------------------------- car games??? -----------------------------------
+local CarProps = Window:Tab("Car game stuffs")
+        CarProps:AddButton("Commandeer nearest seat", function()
+        local char = GetChar()
+        if char and char:FindFirstChildOfClass("Humanoid") then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        local hrp = hum.RootPart
+local MAX_DISTANCE = 50
+
+local function GetNearestSeat()
+	local nearestSeat = nil
+	local shortestDistance = math.huge
+	
+	for _, descendant in pairs(workspace:GetDescendants()) do
+		if descendant:IsA("VehicleSeat") and descendant.Anchored == false and descendant.Occupant == nil then
+			local distance = (descendant.Position - hrp.Position).Magnitude
+			if distance < shortestDistance then
+				shortestDistance = distance
+				nearestSeat = descendant
+			end
+		end
+	end
+	
+	return nearestSeat, shortestDistance
+end
+
+
+local NearSeat:VehicleSeat, Distance = GetNearestSeat()
+if NearSeat and Distance <= MAX_DISTANCE then
+	NearSeat:Sit(hum)
+    Window:Notify("Chair steal", "Seat stolen >:3", "success", 3)
+    else
+     Window:Notify("Chair steal", "Couldn't find a free seat!", "error", 3)
+end
+        end
+        end)
