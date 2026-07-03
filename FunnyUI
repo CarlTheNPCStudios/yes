@@ -3,120 +3,120 @@ local PUI = loadstring(game:HttpGet("https://haxhell.com/raw/universal-script-pu
 local plr = game.Players.LocalPlayer
 
 local function GetChar()
-    return plr.Character
+	return plr.Character
 end
 
 local Window = PUI:CreateWindow({
-    Title = "Funny UI",
-    Theme = "Graphite"
+	Title = "Funny UI",
+	Theme = "Graphite"
 })
 
 local Main = Window:Tab("Main")
 Main:AddButton("Load Infinite Gay", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff"))()
 end)
 Main:AddButton("Load Adonis Bypass (LOAD BEFORE REMOTE SPYS)", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
 end)
 Main:AddButton("Load Lucas's Magnet", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Lukashub-coder/Lukas-magnet/refs/heads/main/Lukas%20magnet"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Lukashub-coder/Lukas-magnet/refs/heads/main/Lukas%20magnet"))()
 end)
 
 Main:AddButton("Script builders dream", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Adonis%20bypass"))()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Stuff"))()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
 end)
 
-	Main:AddButton({
-		Text = "Crash the game for some reason",
-		Height = 52,
-		Color = Color3.fromRGB(255, 0, 0),
-		HoverColor = Color3.fromRGB(150, 0, 0),
-		TextColor = Color3.fromRGB(255, 255, 255),
-		TextSize = 15,
-		Corner = 12,
-	}, function()
- loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Game%20Killer%209000"))()
-	end)
+Main:AddButton({
+	Text = "Crash the game for some reason",
+	Height = 52,
+	Color = Color3.fromRGB(255, 0, 0),
+	HoverColor = Color3.fromRGB(150, 0, 0),
+	TextColor = Color3.fromRGB(255, 255, 255),
+	TextSize = 15,
+	Corner = 12,
+}, function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/Game%20Killer%209000"))()
+end)
 
-    	Main:AddButton({
-		Text = "PRESS THIS I DARE YOU",
-		Height = 52,
-		Color = Color3.fromRGB(255, 255, 0),
-		HoverColor = Color3.fromRGB(200, 200, 0),
-		TextColor = Color3.fromRGB(0, 0, 0),
-		TextSize = 15,
-		Corner = 12,
-	}, function()
- loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/CursedThing"))()
- task.wait(4)
- while true do end
-	end)
+Main:AddButton({
+	Text = "PRESS THIS I DARE YOU",
+	Height = 52,
+	Color = Color3.fromRGB(255, 255, 0),
+	HoverColor = Color3.fromRGB(200, 200, 0),
+	TextColor = Color3.fromRGB(0, 0, 0),
+	TextSize = 15,
+	Corner = 12,
+}, function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CarlTheNPCStudios/yes/refs/heads/main/CursedThing"))()
+	task.wait(4)
+	while true do end
+end)
 
 local HProps = Window:Tab("Humanoid Properties")
 -------------------------------- Humanoid Properties -----------------------------------------
 HProps:Section("Toggles")
-	HProps:Toggle("Platform Stand", false, function(value)
-    local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        hum.PlatformStand = value
-        end
-	end)
-    	HProps:Toggle("Sitting", false, function(value)
-        local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        hum.Sit = value
-        end
-	end)
-        HProps:Toggle("Auto Rotate", true, function(value)
-        local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        hum.AutoRotate = value
-        end
-	end)
-    HProps:Section("Sliders")
-	HProps:Slider("Speed", 0, 100, 16, function(value)
-		local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        hum.WalkSpeed = value
-        end
-	end)
-    	HProps:Slider("Jump Power", 0, 100, 50, function(value)
-		local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        hum.JumpPower = value
-        end
-	end)
-        HProps:Slider("Hip Height/Float", 0, 100, 0, function(value)
-		local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        hum.HipHeight = value
-        end
-	end)
+HProps:Toggle("Platform Stand", false, function(value)
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		hum.PlatformStand = value
+	end
+end)
+HProps:Toggle("Sitting", false, function(value)
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		hum.Sit = value
+	end
+end)
+HProps:Toggle("Auto Rotate", true, function(value)
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		hum.AutoRotate = value
+	end
+end)
+HProps:Section("Sliders")
+HProps:Slider("Speed", 0, 100, 16, function(value)
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		hum.WalkSpeed = value
+	end
+end)
+HProps:Slider("Jump Power", 0, 100, 50, function(value)
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		hum.JumpPower = value
+	end
+end)
+HProps:Slider("Hip Height/Float", 0, 100, 0, function(value)
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		hum.HipHeight = value
+	end
+end)
 
-    --------------------------------- Global Properties -----------------------------------
-    local GProps = Window:Tab("Global Properties")
-    GProps:Label("Set box to number, 192.2 is default")
-    GProps:TextBox("Gravity", "192.2", function(text) 
-    if tonumber(text) then
-    workspace.Gravity = text
-    else
-    Window:Notify("Gravity", "not a valid number?", "error", 3)
-    end
-    end)
-        GProps:Paragraph("Streaming Enabled Note","Streaming Enabled is the property that makes it so that the game pauses to load, and unloads things that are not within a radius. turning this off when it's defaulted to on SHOULD disable the annoying pop-up-")
-        GProps:Label("But it CANNOT remove the loading radius")
-    	GProps:Toggle("Streaming Enabled", workspace.StreamingEnabled, function(value)
-        workspace.StreamingEnabled = value
-	    end)
+--------------------------------- Global Properties -----------------------------------
+local GProps = Window:Tab("Global Properties")
+GProps:Label("Set box to number, 192.2 is default")
+GProps:TextBox("Gravity", "192.2", function(text) 
+	if tonumber(text) then
+		workspace.Gravity = text
+	else
+		Window:Notify("Gravity", "not a valid number?", "error", 3)
+	end
+end)
+GProps:Paragraph("Streaming Enabled Note","Streaming Enabled is the property that makes it so that the game pauses to load, and unloads things that are not within a radius. turning this off when it's defaulted to on SHOULD disable the annoying pop-up-")
+GProps:Label("But it CANNOT remove the loading radius")
+GProps:Toggle("Streaming Enabled", workspace.StreamingEnabled, function(value)
+	workspace.StreamingEnabled = value
+end)
 
 
 --------------------------------- BLAP SATTLES??? -----------------------------------
@@ -145,151 +145,184 @@ local function FindGlove()
 			end
 		end
 	end
-return nil
+	return nil
 end
 
 SBProps:Paragraph("Note", "Some of these may work in other slap battles game, some may not. And loading some of these may just kick you in Blap Sattles")
 SBProps:Section("Useful")
+local GScale = 3
+local Connection = nil
 SBProps:Label("I suggest 15 for glove scale")
-        SBProps:Slider("Scale Glove", 0, 100, 3, function(value)
-			local char = GetChar()
-        	if char then
-				local glove = FindGlove()
+SBProps:Slider("Scale Glove", 0, 100, 3, function(value)
+	local char = GetChar()
+	if char then
+		local glove = FindGlove()
 
-				if glove then
+		if glove then
+			local Model = glove:FindFirstChild("Glove") or glove:FindFirstChild("Hand") or glove:FindFirstChild("glove") or glove:FindFirstChild("hand")
+			Model.Size = Vector3.new(1,1,1)*value
+			GScale = value
+		else
+			Window:Notify("Scale Glove", "Cannot find glove!", "error", 3)
+		end
+
+	end
+end)	
+
+
+SBProps:Toggle("Loop scale", false, function(value)------
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local glove = FindGlove()
+		if value then
+			glove = FindGlove()
+
+			Connection = game:GetService("RunService").Heartbeat:Connect(function()
+				if glove and glove.Parent then
 					local Model = glove:FindFirstChild("Glove") or glove:FindFirstChild("Hand") or glove:FindFirstChild("glove") or glove:FindFirstChild("hand")
-					Model.Size = Vector3.new(1,1,1)*value
+					if Model then
+						Model.Size = Vector3.new(1,1,1)*GScale
+					end
 				else
-					Window:Notify("Scale Glove", "Cannot find glove!", "error", 3)
+					glove = FindGlove()
 				end
-				
-       		end
-		end)	
+			end)
 
-        
-        SBProps:Paragraph("Anti-Void note","This creates a part at your feet, press this when your in the arena (RELOADABLE)")
-        SBProps:AddButton("Place Anti-Void", function()
-        local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        local hrp = hum.RootPart
+		else
 
-        local part = Instance.new("Part",workspace)
-        part.Anchored = true
-        part.Size = Vector3.new(2048,1,2048)
-        part.Position = hrp.Position-Vector3.new(0,4.5,0)
-        part.Transparency = 0.8
-        part.Name = "KarV0id"
+			if Connection then
+				Connection:Disconnect()
+			end
 
-        end
-        end)
-        SBProps:AddButton("Remove anti-void", function()
-        if workspace:FindFirstChild("KarV0id") then
-        workspace:FindFirstChild("KarV0id"):Destroy()
-        else
-        Window:Notify("Anti Void", "There is no anti-void!", "error", 3)
-        end
-        end)
+		end
 
-        SBProps:AddButton("Bring Trashcans", function()
-        local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        local hrp = hum.RootPart
+	end
+end)
 
-        local folder = workspace:FindFirstChild("Interactables")
+SBProps:Paragraph("Anti-Void note","This creates a part at your feet, press this when your in the arena (RELOADABLE)")
+SBProps:AddButton("Place Anti-Void", function()
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local hrp = hum.RootPart
 
-        if folder then
-            for i,v in pairs(folder:GetChildren()) do
-if v:IsA("Model") then 
-v.PrimaryPart.CFrame = hrp.CFrame*CFrame.new(0,0,-6)
-end
-end
-        else
-            Window:Notify("Blap Sattles", "No Interacttables folder! Not Blap Sattles?", "error", 3)
-        end
-        end
-        end)
+		local part = Instance.new("Part",workspace)
+		part.Anchored = true
+		part.Size = Vector3.new(2048,1,2048)
+		part.Position = hrp.Position-Vector3.new(0,4.5,0)
+		part.Transparency = 0.8
+		part.Name = "KarV0id"
 
-        SBProps:AddButton("Collect all Slapples", function()
-        local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        local hrp = hum.RootPart
+	end
+end)
+SBProps:AddButton("Remove anti-void", function()
+	if workspace:FindFirstChild("KarV0id") then
+		workspace:FindFirstChild("KarV0id"):Destroy()
+	else
+		Window:Notify("Anti Void", "There is no anti-void!", "error", 3)
+	end
+end)
 
-        for i,v in pairs(workspace:GetDescendants()) do 
-        if v:IsA("TouchTransmitter") and v:FindFirstAncestor("Slapple") or v:IsA("TouchTransmitter") and v.Parent.Parent.Name == "Slapple" then
-        char:PivotTo(v:FindFirstAncestor("Slapple"):GetPivot())
-        task.wait()
-        end
-        end
+SBProps:AddButton("Bring Trashcans", function()
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local hrp = hum.RootPart
 
-        end
-        end)
+		local folder = workspace:FindFirstChild("Interactables")
+
+		if folder then
+			for i,v in pairs(folder:GetChildren()) do
+				if v:IsA("Model") then 
+					v.PrimaryPart.CFrame = hrp.CFrame*CFrame.new(0,0,-6)
+				end
+			end
+		else
+			Window:Notify("Blap Sattles", "No Interacttables folder! Not Blap Sattles?", "error", 3)
+		end
+	end
+end)
+
+SBProps:AddButton("Collect all Slapples", function()
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local hrp = hum.RootPart
+
+		for i,v in pairs(workspace:GetDescendants()) do 
+			if v:IsA("TouchTransmitter") and v:FindFirstAncestor("Slapple") or v:IsA("TouchTransmitter") and v.Parent.Parent.Name == "Slapple" then
+				char:PivotTo(v:FindFirstAncestor("Slapple"):GetPivot())
+				task.wait()
+			end
+		end
+
+	end
+end)
 
 SBProps:Section("Visual")
 
-         SBProps:Paragraph("Set Slaps/Kills note","This sets your Slaps/Kills on the CLIENT, this does is purley visual unless the developer is a moron")
-             SBProps:TextBox("Set Slaps/Kills", "9999", function(text) 
-    if tonumber(text) then
-    if plr.leaderstats and plr.leaderstats.Slaps or plr.leaderstats and plr.leaderstats.Kills then
-    local val = plr.leaderstats:FindFirstChild("Slaps") or plr.leaderstats:FindFirstChild("Kills")
-    if val then
-    val.Value = text
-    else
-     Window:Notify("Set Slaps/Kills", "no valid values!", "error", 3)
-    end
-    end
-    else
-    Window:Notify("Set Slaps/Kills", "not a valid number?", "error", 3)
-    end
-    end)
+SBProps:Paragraph("Set Slaps/Kills note","This sets your Slaps/Kills on the CLIENT, this does is purley visual unless the developer is a moron")
+SBProps:TextBox("Set Slaps/Kills", "9999", function(text) 
+	if tonumber(text) then
+		if plr.leaderstats and plr.leaderstats.Slaps or plr.leaderstats and plr.leaderstats.Kills then
+			local val = plr.leaderstats:FindFirstChild("Slaps") or plr.leaderstats:FindFirstChild("Kills")
+			if val then
+				val.Value = text
+			else
+				Window:Notify("Set Slaps/Kills", "no valid values!", "error", 3)
+			end
+		end
+	else
+		Window:Notify("Set Slaps/Kills", "not a valid number?", "error", 3)
+	end
+end)
 
-            SBProps:Paragraph("Set Glove note","This sets your Glove on the CLIENT, this does is purley visual unless the developer is a moron")
-             SBProps:TextBox("Set Glove", "Default", function(text) 
-    if plr.leaderstats and plr.leaderstats.Glove then
-    local val = plr.leaderstats:FindFirstChild("Glove") 
-    if val then
-    val.Value = text
-    else
-     Window:Notify("Set Glove", "no valid values!", "error", 3)
-    end
-    end
-    end)
+SBProps:Paragraph("Set Glove note","This sets your Glove on the CLIENT, this does is purley visual unless the developer is a moron")
+SBProps:TextBox("Set Glove", "Default", function(text) 
+	if plr.leaderstats and plr.leaderstats.Glove then
+		local val = plr.leaderstats:FindFirstChild("Glove") 
+		if val then
+			val.Value = text
+		else
+			Window:Notify("Set Glove", "no valid values!", "error", 3)
+		end
+	end
+end)
 
 --------------------------------- car games??? -----------------------------------
 local CarProps = Window:Tab("Car game stuffs")
-        CarProps:AddButton("Commandeer nearest seat", function()
-        local char = GetChar()
-        if char and char:FindFirstChildOfClass("Humanoid") then
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        local hrp = hum.RootPart
-local MAX_DISTANCE = 50
+CarProps:AddButton("Commandeer nearest seat", function()
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local hrp = hum.RootPart
+		local MAX_DISTANCE = 50
 
-local function GetNearestSeat()
-	local nearestSeat = nil
-	local shortestDistance = math.huge
-	
-	for _, descendant in pairs(workspace:GetDescendants()) do
-		if descendant:IsA("VehicleSeat") and descendant.Anchored == false and descendant.Occupant == nil then
-			local distance = (descendant.Position - hrp.Position).Magnitude
-			if distance < shortestDistance then
-				shortestDistance = distance
-				nearestSeat = descendant
+		local function GetNearestSeat()
+			local nearestSeat = nil
+			local shortestDistance = math.huge
+
+			for _, descendant in pairs(workspace:GetDescendants()) do
+				if descendant:IsA("VehicleSeat") and descendant.Anchored == false and descendant.Occupant == nil then
+					local distance = (descendant.Position - hrp.Position).Magnitude
+					if distance < shortestDistance then
+						shortestDistance = distance
+						nearestSeat = descendant
+					end
+				end
 			end
+
+			return nearestSeat, shortestDistance
+		end
+
+
+		local NearSeat:VehicleSeat, Distance = GetNearestSeat()
+		if NearSeat and Distance <= MAX_DISTANCE then
+			NearSeat:Sit(hum)
+			Window:Notify("Chair steal", "Seat stolen >:3", "success", 3)
+		else
+			Window:Notify("Chair steal", "Couldn't find a free seat!", "error", 3)
 		end
 	end
-	
-	return nearestSeat, shortestDistance
-end
-
-
-local NearSeat:VehicleSeat, Distance = GetNearestSeat()
-if NearSeat and Distance <= MAX_DISTANCE then
-	NearSeat:Sit(hum)
-    Window:Notify("Chair steal", "Seat stolen >:3", "success", 3)
-    else
-     Window:Notify("Chair steal", "Couldn't find a free seat!", "error", 3)
-end
-        end
-        end)
+end)
