@@ -183,6 +183,8 @@ SBProps:Toggle("Loop scale", false, function(value)------
 					local Model = glove:FindFirstChild("Glove") or glove:FindFirstChild("Hand") or glove:FindFirstChild("glove") or glove:FindFirstChild("hand")
 					if Model then
 						Model.Size = Vector3.new(1,1,1)*GScale
+					else
+						glove = FindGlove()
 					end
 				else
 					glove = FindGlove()
