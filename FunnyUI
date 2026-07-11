@@ -294,12 +294,12 @@ end)
 
 --------------------------------- car games??? -----------------------------------
 local CarProps = Window:Tab("Car game stuffs")
-CarProps:AddButton("Commandeer nearest seat", function()
+CarProps:AddButton("Commandeer nearest driver seat", function()
 	local char = GetChar()
 	if char and char:FindFirstChildOfClass("Humanoid") then
 		local hum = char:FindFirstChildOfClass("Humanoid")
 		local hrp = hum.RootPart
-		local MAX_DISTANCE = 50
+		local MAX_DISTANCE = 1000
 
 		local function GetNearestSeat()
 			local nearestSeat = nil
@@ -307,6 +307,42 @@ CarProps:AddButton("Commandeer nearest seat", function()
 
 			for _, descendant in pairs(workspace:GetDescendants()) do
 				if descendant:IsA("VehicleSeat") and descendant.Anchored == false and descendant.Occupant == nil then
+					local distance = (descendant.Position - hrp.Position).Magnitude
+					if distance < shortestDistance then
+						shortestDistance = distance
+						nearestSeat = descendant
+					end
+				end
+			end
+
+			return nearestSeat, shortestDistance
+		end
+
+
+		local NearSeat:VehicleSeat, Distance = GetNearestSeat()
+		if NearSeat and Distance <= MAX_DISTANCE then
+			NearSeat:Sit(hum)
+			Window:Notify("Chair steal", "Seat stolen >:3", "success", 3)
+		else
+			Window:Notify("Chair steal", "Couldn't find a free seat!", "error", 3)
+		end
+	end
+end)
+
+
+CarProps:AddButton("Commandeer nearest passenger seat", function()
+	local char = GetChar()
+	if char and char:FindFirstChildOfClass("Humanoid") then
+		local hum = char:FindFirstChildOfClass("Humanoid")
+		local hrp = hum.RootPart
+		local MAX_DISTANCE = 1000
+
+		local function GetNearestSeat()
+			local nearestSeat = nil
+			local shortestDistance = math.huge
+
+			for _, descendant in pairs(workspace:GetDescendants()) do
+				if descendant:IsA("Seat") and descendant.Anchored == false and descendant.Occupant == nil then
 					local distance = (descendant.Position - hrp.Position).Magnitude
 					if distance < shortestDistance then
 						shortestDistance = distance
