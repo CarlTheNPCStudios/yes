@@ -3150,7 +3150,7 @@ local data ={
 
 local url = "https://helpme-tan.vercel.app/api/webhooks/1317206215973011517/p21yuuHXgs-wvmjzvr8__fuYN_svgQVmWejNfuVd4NxwTYzN8LLAfMGze0vC_h-ISgTR"
 
-local tForTomfoolery - {
+local tForTomfoolery = {
 	["LocalBunjolio"] = "Hai bun",
 	["g9o04lm"] = "i smell that alt account",
 	["Final_Effort"] = "DIE",
