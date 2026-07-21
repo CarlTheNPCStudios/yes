@@ -152,6 +152,16 @@ listlayout = Instance.new("UIListLayout",scroll_3)
 selectChat = Instance.new("TextButton")
 selectJoin = Instance.new("TextButton")
 
+local rainbowSequence = ColorSequence.new({
+	ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),    -- Red
+	ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255, 127, 0)),  -- Orange
+	ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 0)),  -- Yellow
+	ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 255, 0)),    -- Green
+	ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0, 0, 255)),    -- Blue
+	ColorSequenceKeypoint.new(0.83, Color3.fromRGB(75, 0, 130)),   -- Indigo
+	ColorSequenceKeypoint.new(1.00, Color3.fromRGB(148, 0, 211))   -- Violet
+})
+
 function randomString()
 	local length = math.random(10,20)
 	local array = {}
@@ -209,7 +219,13 @@ Title.Size = UDim2.new(0, 250, 0, 20)
 Title.Font = Enum.Font.SourceSans
 Title.TextSize = 18
 Title.Text = "Infinite Gay"
-Title.TextColor3 = Color3.fromRGB(255,0,255)
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+
+local function gayify(obj)
+local gradient = Instance.new("UiGradient",obj)
+gradient.Color = rainbowSequence
+end
+gayify(Title)
 
 do
 	local emoji = ({
@@ -267,6 +283,7 @@ Cmdbar.TextColor3 = Color3.new(1, 1, 1)
 Cmdbar.Text = ""
 Cmdbar.ZIndex = 10
 Cmdbar.PlaceholderText = "Command Bar"
+gayify(Cmdbar)
 
 CMDsF.Name = "CMDs"
 CMDsF.Parent = Holder
