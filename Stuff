@@ -239,7 +239,7 @@ do
 	end
 end
 
-Title.TextColor3 = Color3.new(1, 1, 1)
+--Title.TextColor3 = Color3.new(1, 1, 1)
 Title.ZIndex = 10
 table.insert(shade1,Title)
 table.insert(text1,Title)
