@@ -334,6 +334,9 @@ end)
 
 
 local function gayify(obj)
+	if obj:FindFirstChildOfClass("UIGradient") then
+		obj:FindFirstChildOfClass("UIGradient"):Destroy()
+	end
 	local gradient = Instance.new("UIGradient",obj)
 	table.insert(TableOfGay,gradient)
 end
@@ -12979,12 +12982,33 @@ addcmd('removeterrain',{'rterrain','noterrain'},function(args, speaker)
 	workspace:FindFirstChildOfClass('Terrain'):Clear()
 end)
 
+local GuiClasses = {
+"ImageLabel",
+"ImageButton",
+"TextLabel",
+"TextButton",
+"TextBox",
+"Frame",
+"ViewportFrame",
+"UiStroke",
+}
+
+local function IsAGuiObject(obj)
+return obj and table.find(GuiClasses,obj.ClassName)
+end
+
 addcmd('gay',{'rainbow'},function(args, speaker)
 	for i,v in pairs(game:GetDescendants()) do
-		if v:FindFirstAncestorOfClass("ScreenGui") then
+		if IsAGuiObject(v) then
 			gayify(v)
 		end
 	end
+	game.DescendantAdded:Connect(function(obj)
+		if IsAGuiObject(obj) then
+			gayify(obj)
+		end
+	end)
+
 end)
 
 addcmd('clearnilinstances',{'nonilinstances','cni'},function(args, speaker)
