@@ -223,25 +223,147 @@ Title.TextColor3 = Color3.fromRGB(255,255,255)
 
 local tOfGay = {}
 
-local HeartBeatOfDoom = game:GetService("Run Service").Heartbeat:Connect(function(delta)
-local Speed = 0.1
-local fixed = Speed*delta
-
-for i,v in pairs(tOfGay) do
-	local s, r = pcall(function()
-		v.Offset+=fixed
-	end)
-	if not s then
-	warn("Rainbow thingy broke: "..tostring(r))
-	end
-
-end
-
-end)
 
 local function gayify(obj)
 local gradient = Instance.new("UIGradient",obj)
 gradient.Color = rainbowSequence
+table.insert(tOfGay,gradient)
+
+local ts = game:GetService("TweenService")
+local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local offset = {Offset = Vector2.new(1, 0)}
+local create = ts:Create(gradient, ti, offset)
+local startingPos = Vector2.new(-1, 0)
+local list = {} --list of random colors (we'll be generating them shortly after)
+local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+local counter = 0 --count the last table index we just indexed/last gradient color reference
+local status = "down"
+
+gradient.Offset = startingPos
+local function rainbowColors()
+	local sat, val = 255, 255 
+	for i = 1, 15 do --15 is a multiple of 255
+		local hue = i * 17 --255/15 = 17
+		table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255)) --divide by 255 to be in range of 0-1
+	end
+end
+rainbowColors() --add to the list table
+gradient.Color = s({
+
+	kpt(0, list[#list]),
+	kpt(0.5, list[#list - 1]),
+	kpt(1, list[#list - 2])
+
+})
+
+local function animate()
+	
+	create:Play()
+	create.Completed:Wait() --wait for tween completion
+	gradient.Offset = startingPos 
+	gradient.Rotation = 180 --flip time!
+	
+    --[[#list - 1 because we have 3 key points, 1 will be preserved from 
+    the previous tween, while the other 2 are new. We need to make 
+    sure that indexing something beyond #list doesn't happen as it will 
+    throw an error. In this instance, it will be 9, 10, and instead of it looking
+    for 11, it will go back to 1.]]
+	if counter == #list - 1 and status == "down" then
+		
+		gradient.Color = s({
+	
+			kpt(0, gradient.Color.Keypoints[1].Value), --preserve previous color, which we'll be able to see
+			kpt(0.5, list[#list]), --change this color behind the scenes!
+			kpt(1, list[1]) --change this color behind the scenes!
+	
+		})
+		
+		counter = 1 --last index is 1 i.e. list[1]
+		status = "up" --the upper section already ran, time for the lower!
+		
+	elseif counter == #list and status == "down" then --if the current counter is exactly 10 (in this instance), then it will go back to 1 and 2
+		
+		gradient.Color = s({
+	
+			kpt(0, gradient.Color.Keypoints[1].Value),
+			kpt(0.5, list[1]),
+			kpt(1, list[2])
+	
+		})
+	
+		counter = 2
+		status = "up"
+		
+	elseif counter <= #list - 2 and status == "down" then  --in all other cases, when couter is 1-8
+		
+		gradient.Color = s({
+	
+			kpt(0, gradient.Color.Keypoints[1].Value),
+			kpt(0.5, list[counter + 1]), --one color over
+			kpt(1, list[counter + 2]) --two colors over
+	
+		})
+		
+		counter = counter + 2
+		status = "up"
+	
+	end
+	
+	create:Play()
+	create.Completed:Wait()
+	gradient.Offset = startingPos
+	gradient.Rotation = 0 --flip time again!
+	
+	if counter == #list - 1 and status == "up" then --same as before, really, but instead of "down", it's "up", since the upper section already ran
+		
+		gradient.Color = s({
+		    
+            --descending order because now it's rotation 0
+			kpt(0, list[1]), --1
+			kpt(0.5, list[#list]), --10
+			kpt(1, gradient.Color.Keypoints[3].Value) --put this at #3 because we just flipped rotation, so this color will be at the opposite side
+				
+		})
+		
+		counter = 1
+		status = "down" --below section already ran, back to the top!
+		
+	 elseif counter == #list and status == "up" then
+		
+		gradient.Color = s({
+		
+			kpt(0, list[2]), --2
+			kpt(0.5, list[1]), --1
+			kpt(1, gradient.Color.Keypoints[3].Value) --10
+				
+		})
+		
+		counter = 2
+		status = "down"
+	
+	elseif counter <= #list - 2 and status == "up" then --in all other cases like before
+		
+		gradient.Color = s({
+		
+			kpt(0, list[counter + 2]), 
+			kpt(0.5, list[counter + 1]), 
+			kpt(1, gradient.Color.Keypoints[3].Value) 
+				
+		})
+		
+		counter = counter + 2
+		status = "down"
+	
+	end
+	
+	animate() --call the function inside of itself, so that it runs indefinitely
+	
+end
+
+task.spawn(function()
+animate() --call the function initially 
+end)
+
 end
 gayify(Title)
 
@@ -4567,6 +4689,7 @@ CMDs[#CMDs + 1] = {NAME = 'tpunanchored / tpua [player]', DESC = 'Teleports unan
 CMDs[#CMDs + 1] = {NAME = 'animsunanchored / freezeua', DESC = 'Freezes unanchored parts'}
 CMDs[#CMDs + 1] = {NAME = 'thawunanchored / thawua / unfreezeua', DESC = 'Thaws unanchored parts'}
 CMDs[#CMDs + 1] = {NAME = 'removeterrain / rterrain / noterrain', DESC = 'Removes all terrain'}
+CMDs[#CMDs + 1] = {NAME = 'gay / rainbow', DESC = 'MAKES EVERYTHING GAY'}
 CMDs[#CMDs + 1] = {NAME = 'clearnilinstances / nonilinstances / cni', DESC = 'Removes nil instances'}
 CMDs[#CMDs + 1] = {NAME = 'destroyheight / dh [num]', DESC = 'Sets FallenPartsDestroyHeight'}
 CMDs[#CMDs + 1] = {NAME = 'fakeout', DESC = 'Tp to the void and then back (useful to kill people attached to you)'}
@@ -12824,7 +12947,7 @@ end)
 
 local HEspCon = {}
 local IsHighlighting = false
-addcmd("highlightesp", {}, function(args, speaker)
+addcmd("highlightesp", {'hesp'}, function(args, speaker)
 if IsHighlighting == true then  notify("Karura's highlight ESP", "It's already enabled, dumbass") return end
 IsHighlighting = true
 local AddHighlightProperties = function(highlight:Highlight,color)
@@ -12865,7 +12988,7 @@ HEspCon["PlrConnection"] = game.Players.PlayerAdded:Connect(AttachPlayer)
  notify("Karura's highlight ESP", "Enabled :3")
 end)
 
-addcmd("unhighlightesp", {}, function(args, speaker)
+addcmd("unhighlightesp", {'unhesp'}, function(args, speaker)
 IsHighlighting = false
 for i,v in pairs(HEspCon) do
 v:Disconnect()
@@ -12882,6 +13005,14 @@ end)
 
 addcmd('removeterrain',{'rterrain','noterrain'},function(args, speaker)
 	workspace:FindFirstChildOfClass('Terrain'):Clear()
+end)
+
+addcmd('gay',{'rainbow'},function(args, speaker)
+	for i,v in pairs(game:GetDescendants())
+		if v:FindFirstAncestorOfClass("ScreenGui") then
+			gayify(v)
+		end
+	end)
 end)
 
 addcmd('clearnilinstances',{'nonilinstances','cni'},function(args, speaker)
