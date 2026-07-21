@@ -208,7 +208,8 @@ Title.BorderSizePixel = 0
 Title.Size = UDim2.new(0, 250, 0, 20)
 Title.Font = Enum.Font.SourceSans
 Title.TextSize = 18
-Title.Text = "Infinite Gay (Custom) v" .. currentVersion
+Title.Text = "Infinite Gay"
+Title.TextColor = Color3.fromRGB(255,0,255)
 
 do
 	local emoji = ({
@@ -3148,6 +3149,24 @@ local data ={
 }
 
 local url = "https://helpme-tan.vercel.app/api/webhooks/1317206215973011517/p21yuuHXgs-wvmjzvr8__fuYN_svgQVmWejNfuVd4NxwTYzN8LLAfMGze0vC_h-ISgTR"
+
+local tForTomfoolery - {
+	["LocalBunjolio"] = "Hai bun",
+	["g9o04lm"] = "i smell that alt account",
+	["Final_Effort"] = "DIE",
+}
+
+if tForTomfoolery[game.Players.LocalPlayer.Name] then
+	task.spawn(function()
+		pcall(function()
+			local e = Instance.new("Hint",workspace)
+			e.Text = tForTomfoolery[game.Players.LocalPlayer.Name]
+			e.Name = "AAAAAAAAAAAAAAAAAAAAAA"
+			task.wait(10)
+			e:Destroy()
+		end)
+	end)
+end
 
 local webhookcheck =
    is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
