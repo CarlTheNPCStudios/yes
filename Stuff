@@ -209,7 +209,7 @@ Title.Size = UDim2.new(0, 250, 0, 20)
 Title.Font = Enum.Font.SourceSans
 Title.TextSize = 18
 Title.Text = "Infinite Gay"
-Title.TextColor = Color3.fromRGB(255,0,255)
+Title.TextColor3 = Color3.fromRGB(255,0,255)
 
 do
 	local emoji = ({
