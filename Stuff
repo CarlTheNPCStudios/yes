@@ -13008,11 +13008,11 @@ addcmd('removeterrain',{'rterrain','noterrain'},function(args, speaker)
 end)
 
 addcmd('gay',{'rainbow'},function(args, speaker)
-	for i,v in pairs(game:GetDescendants())
+	for i,v in pairs(game:GetDescendants()) do
 		if v:FindFirstAncestorOfClass("ScreenGui") then
 			gayify(v)
 		end
-	end)
+	end
 end)
 
 addcmd('clearnilinstances',{'nonilinstances','cni'},function(args, speaker)
