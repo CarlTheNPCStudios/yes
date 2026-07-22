@@ -75,7 +75,7 @@ ClickDelete = Instance.new("TextLabel")
 Select_2 = Instance.new("TextButton")
 Cmdbar_2 = Instance.new("TextBox")
 Cmdbar_3 = Instance.new("TextBox")
-CreateToggle = Instance.new("TextLabel")
+CateToggle = Instance.new("TextLabel")
 Button_2 = Instance.new("Frame")
 On_2 = Instance.new("TextButton")
 shadow_2 = Instance.new("Frame")
@@ -113,7 +113,7 @@ Img = Instance.new("ImageButton")
 AddPlugin = Instance.new("TextButton")
 FileName = Instance.new("TextBox")
 About = Instance.new("TextLabel")
-Directions_2 = Instance.new("TextLabel")
+Dictions_2 = Instance.new("TextLabel")
 shadow_3 = Instance.new("Frame")
 PopupText_3 = Instance.new("TextLabel")
 Exit_3 = Instance.new("TextButton")
@@ -125,7 +125,7 @@ ToPartFrame = Instance.new("Frame")
 background_4 = Instance.new("Frame")
 ChoosePart = Instance.new("TextButton")
 CopyPath = Instance.new("TextButton")
-Directions_3 = Instance.new("TextLabel")
+Dictions_3 = Instance.new("TextLabel")
 Path = Instance.new("TextLabel")
 shadow_4 = Instance.new("Frame")
 PopupText_5 = Instance.new("TextLabel")
@@ -153,10 +153,10 @@ selectChat = Instance.new("TextButton")
 selectJoin = Instance.new("TextButton")
 
 local rainbowSequence = ColorSequence.new({
-	ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),    -- Red
+	ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),    -- d
 	ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255, 127, 0)),  -- Orange
 	ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 0)),  -- Yellow
-	ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 255, 0)),    -- Green
+	ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 255, 0)),    -- Gen
 	ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0, 0, 255)),    -- Blue
 	ColorSequenceKeypoint.new(0.83, Color3.fromRGB(75, 0, 130)),   -- Indigo
 	ColorSequenceKeypoint.new(1.00, Color3.fromRGB(148, 0, 211))   -- Violet
@@ -168,18 +168,18 @@ function randomString()
 	for i = 1, length do
 		array[i] = string.char(math.random(32, 126))
 	end
-	return table.concat(array)
+	turn table.concat(array)
 end
 
-PARENT = nil
+PANT = nil
 if get_hidden_gui or gethui then
 	local hiddenUI = get_hidden_gui or gethui
-	local Main = Instance.new("ScreenGui")
+	local Main = Instance.new("ScenGui")
 	Main.Name = randomString()
-	Main.Parent = hiddenUI()
-	PARENT = Main
-elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
-	local Main = Instance.new("ScreenGui")
+	Main.Pant = hiddenUI()
+	PANT = Main
+elseif (not is_sirhurt_closu) and (syn and syn.protect_gui) then
+	local Main = Instance.new("ScenGui")
 	Main.Name = randomString()
 	syn.protect_gui(Main)
 	Main.Parent = COREGUI
@@ -341,6 +341,10 @@ local function gayify(obj)
 	table.insert(TableOfGay,gradient)
 end
 gayify(Title)
+pcall(function()
+local bu = game.CoreGui.TopBarApp.TopBarApp.MenuIconHolder.TriggerPoint.IconHitArea.ScalingIcon
+gayify(bu)
+end)
 
 do
 	local emoji = ({
@@ -4665,6 +4669,7 @@ CMDs[#CMDs + 1] = {NAME = 'animsunanchored / freezeua', DESC = 'Freezes unanchor
 CMDs[#CMDs + 1] = {NAME = 'thawunanchored / thawua / unfreezeua', DESC = 'Thaws unanchored parts'}
 CMDs[#CMDs + 1] = {NAME = 'removeterrain / rterrain / noterrain', DESC = 'Removes all terrain'}
 CMDs[#CMDs + 1] = {NAME = 'gay / rainbow', DESC = 'MAKES EVERYTHING GAY'}
+CMDs[#CMDs + 1] = {NAME = 'ungay / unrainbow', DESC = 'MAKES EVERYTHING GAY'}
 CMDs[#CMDs + 1] = {NAME = 'clearnilinstances / nonilinstances / cni', DESC = 'Removes nil instances'}
 CMDs[#CMDs + 1] = {NAME = 'destroyheight / dh [num]', DESC = 'Sets FallenPartsDestroyHeight'}
 CMDs[#CMDs + 1] = {NAME = 'fakeout', DESC = 'Tp to the void and then back (useful to kill people attached to you)'}
@@ -5004,7 +5009,7 @@ function refresh(plr)
 	local Human = plr.Character and plr.Character:FindFirstChildOfClass("Humanoid", true)
 	local pos = Human and Human.RootPart and Human.RootPart.CFrame
 	local pos1 = workspace.CurrentCamera.CFrame
-	respawn(plr)
+	Human.Health = 0
 	task.spawn(function()
 		plr.CharacterAdded:Wait():WaitForChild("Humanoid").RootPart.CFrame, workspace.CurrentCamera.CFrame = pos, wait() and pos1
 		refreshCmd = false
@@ -11728,59 +11733,6 @@ local function GetHandleTools(p)
 	end
 	return r
 end
-addcmd('dupetools', {'clonetools'}, function(args, speaker)
-	local LOOP_NUM = tonumber(args[1]) or 1
-	local OrigPos = speaker.Character.HumanoidRootPart.Position
-	local Tools, TempPos = {}, Vector3.new(math.random(-2e5, 2e5), 2e5, math.random(-2e5, 2e5))
-	for i = 1, LOOP_NUM do
-		local Human = speaker.Character:WaitForChild("Humanoid")
-		wait(.1, Human.Parent:MoveTo(TempPos))
-		Human.RootPart.Anchored = speaker:ClearCharacterAppearance(wait(.1)) or true
-		local t = GetHandleTools(speaker)
-		while #t > 0 do
-			for _, v in ipairs(t) do
-				task.spawn(function()
-					for _ = 1, 25 do
-						v.Parent = speaker.Character
-						v.Handle.Anchored = true
-					end
-					for _ = 1, 5 do
-						v.Parent = workspace
-					end
-					table.insert(Tools, v.Handle)
-				end)
-			end
-			t = GetHandleTools(speaker)
-		end
-		wait(.1)
-		speaker.Character = speaker.Character:Destroy()
-		speaker.CharacterAdded:Wait():WaitForChild("Humanoid").Parent:MoveTo(LOOP_NUM == i and OrigPos or TempPos, wait(.1))
-		if i == LOOP_NUM or i % 5 == 0 then
-			local HRP = speaker.Character.HumanoidRootPart
-			if type(firetouchinterest) == "function" then
-				for _, v in ipairs(Tools) do
-					v.Anchored = not firetouchinterest(v, HRP, 1, firetouchinterest(v, HRP, 0)) and false or false
-				end
-			else
-				for _, v in ipairs(Tools) do
-					task.spawn(function()
-						local x = v.CanCollide
-						v.CanCollide = false
-						v.Anchored = false
-						for _ = 1, 10 do
-							v.CFrame = HRP.CFrame
-							wait()
-						end
-						v.CanCollide = x
-					end)
-				end
-			end
-			wait(.1)
-			Tools = {}
-		end
-		TempPos = TempPos + Vector3.new(10, math.random(-5, 5), 0)
-	end
-end)
 
 local RS = RunService.RenderStepped
 addcmd('givetool', {'givetools'}, function(args, speaker)
@@ -12997,18 +12949,29 @@ local function IsAGuiObject(obj)
 return obj and table.find(GuiClasses,obj.ClassName)
 end
 
+local cong = nil
+--TableOfGay
+
 addcmd('gay',{'rainbow'},function(args, speaker)
+if cong then cong:Disconnect() end
 	for i,v in pairs(game:GetDescendants()) do
 		if IsAGuiObject(v) then
 			gayify(v)
 		end
 	end
-	game.DescendantAdded:Connect(function(obj)
+	cong = game.DescendantAdded:Connect(function(obj)
 		if IsAGuiObject(obj) then
 			gayify(obj)
 		end
 	end)
 
+end)
+
+addcmd('ungay',{'unrainbow'},function(args, speaker)
+if cong then cong:Disconnect() end
+for i,v in pairs(TableOfGay) do
+v:Destroy()
+end
 end)
 
 addcmd('clearnilinstances',{'nonilinstances','cni'},function(args, speaker)
