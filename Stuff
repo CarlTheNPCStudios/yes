@@ -6533,7 +6533,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-local function Upd(v)
+local function Upd(v,e)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6553,6 +6553,13 @@ local function Upd(v)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		end
+
+if not e then
+v.Changed:Connect(function()
+Upd(v,true)
+end)
+end
+
 end
 
 for i,v in pairs(game:GetDescendants()) do
@@ -6595,7 +6602,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-local function Upd(v)
+local function Upd(v,e)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6615,6 +6622,11 @@ local function Upd(v)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		end
+
+if not e then
+v.Changed:Connect(function()
+Upd(v,true)
+end)
 end
 
 for i,v in pairs(game:GetDescendants()) do
