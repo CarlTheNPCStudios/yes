@@ -75,7 +75,7 @@ ClickDelete = Instance.new("TextLabel")
 Select_2 = Instance.new("TextButton")
 Cmdbar_2 = Instance.new("TextBox")
 Cmdbar_3 = Instance.new("TextBox")
-CateToggle = Instance.new("TextLabel")
+CreateToggle = Instance.new("TextLabel")
 Button_2 = Instance.new("Frame")
 On_2 = Instance.new("TextButton")
 shadow_2 = Instance.new("Frame")
@@ -113,7 +113,7 @@ Img = Instance.new("ImageButton")
 AddPlugin = Instance.new("TextButton")
 FileName = Instance.new("TextBox")
 About = Instance.new("TextLabel")
-Dictions_2 = Instance.new("TextLabel")
+Directions_2 = Instance.new("TextLabel")
 shadow_3 = Instance.new("Frame")
 PopupText_3 = Instance.new("TextLabel")
 Exit_3 = Instance.new("TextButton")
@@ -125,7 +125,7 @@ ToPartFrame = Instance.new("Frame")
 background_4 = Instance.new("Frame")
 ChoosePart = Instance.new("TextButton")
 CopyPath = Instance.new("TextButton")
-Dictions_3 = Instance.new("TextLabel")
+Directions_3 = Instance.new("TextLabel")
 Path = Instance.new("TextLabel")
 shadow_4 = Instance.new("Frame")
 PopupText_5 = Instance.new("TextLabel")
@@ -171,15 +171,15 @@ function randomString()
 	return table.concat(array)
 end
 
-PANT = nil
+PARENT = nil
 if get_hidden_gui or gethui then
 	local hiddenUI = get_hidden_gui or gethui
-	local Main = Instance.new("ScenGui")
+	local Main = Instance.new("ScreenGui")
 	Main.Name = randomString()
-	Main.Pant = hiddenUI()
-	PANT = Main
-elseif (not is_sirhurt_closu) and (syn and syn.protect_gui) then
-	local Main = Instance.new("ScenGui")
+	Main.Parent = hiddenUI()
+	PARENT = Main
+elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
+	local Main = Instance.new("ScreenGui")
 	Main.Name = randomString()
 	syn.protect_gui(Main)
 	Main.Parent = COREGUI
@@ -6533,8 +6533,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-game.RunService.RenderStepped:Connect(function(delta)
-	for i,v in pairs(game:GetDescendants()) do
+game.DescendantAdded:Connect(function(v)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6554,7 +6553,6 @@ game.RunService.RenderStepped:Connect(function(delta)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		end
-	end
 end)
 end)
 
@@ -6589,8 +6587,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-game.RunService.RenderStepped:Connect(function(delta)
-	for i,v in pairs(game:GetDescendants()) do
+game.DescendantAdded:Connect(function(v)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6610,7 +6607,6 @@ game.RunService.RenderStepped:Connect(function(delta)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		end
-	end
 end)
 end)
 
