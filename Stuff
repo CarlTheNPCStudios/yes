@@ -168,7 +168,7 @@ function randomString()
 	for i = 1, length do
 		array[i] = string.char(math.random(32, 126))
 	end
-	turn table.concat(array)
+	return table.concat(array)
 end
 
 PANT = nil
