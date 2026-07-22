@@ -6533,7 +6533,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-game.DescendantAdded:Connect(function(v)
+local functuin Upd(v)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6553,6 +6553,14 @@ game.DescendantAdded:Connect(function(v)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		end
+end
+
+for i,v in pairs(game:GetDescendants()) do
+Upd(v)
+end
+
+game.DescendantAdded:Connect(function(v)
+Upd(v)
 end)
 end)
 
@@ -6587,7 +6595,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-game.DescendantAdded:Connect(function(v)
+local functuin Upd(v)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6607,6 +6615,14 @@ game.DescendantAdded:Connect(function(v)
 			v.TextStrokeTransparency = 0
 			v.TextStrokeColor3 = Color3.fromRGB(0,0,0)
 		end
+end
+
+for i,v in pairs(game:GetDescendants()) do
+Upd(v)
+end
+
+game.DescendantAdded:Connect(function(v)
+Upd(v)
 end)
 end)
 
