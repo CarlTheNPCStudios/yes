@@ -6559,7 +6559,6 @@ v.Changed:Connect(function()
 Upd(v,true)
 end)
 end
-
 end
 
 for i,v in pairs(game:GetDescendants()) do
@@ -6627,6 +6626,7 @@ if not e then
 v.Changed:Connect(function()
 Upd(v,true)
 end)
+end
 end
 
 for i,v in pairs(game:GetDescendants()) do
