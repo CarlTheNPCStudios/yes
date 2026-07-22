@@ -6533,7 +6533,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-local functuin Upd(v)
+local function Upd(v)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
@@ -6595,7 +6595,7 @@ for i,v in pairs(game:GetDescendants()) do
 	end
 end
 
-local functuin Upd(v)
+local function Upd(v)
 		if v:IsA("ParticleEmitter") then
 			v.Texture = "rbxassetid://"..id
 		elseif v:IsA("ImageLabel") then
